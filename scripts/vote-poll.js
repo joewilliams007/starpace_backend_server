@@ -4,12 +4,7 @@ module.exports = (req, res) => {
     var { session } = req.params;
     var { post_id } = req.params;
     var { item } = req.params;
-    
 
-    if (user_id == null|| user_id == undefined) {
-        console.log("user id undefined")
-        return;
-    }
 
     var moment = require('moment');
     var date = moment().format('YYYY-MM-DD');

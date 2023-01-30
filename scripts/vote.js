@@ -12,11 +12,6 @@ module.exports = (req, res) => {
         dir_int = -1
     }
 
-    if (user_id == null|| user_id == undefined) {
-        console.log("user id undefined")
-        return;
-    }
-
 
     var moment = require('moment');
     var date = moment().format('YYYY-MM-DD');
