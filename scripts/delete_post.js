@@ -7,7 +7,7 @@ module.exports = (req, res) => {
     var db = require('./db');
 
     var session_app = require('./session.js');
-
+    var fs = require("fs"); // Load the filesystem module
     // Authenticate session and ip
     session_app.verify(session, req, res, function(user_id){
         deletePost(user_id);
