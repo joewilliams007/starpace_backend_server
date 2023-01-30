@@ -38,7 +38,7 @@ module.exports = {
                         `SELECT user_id FROM Sessions WHERE session_id="${session}"`
                         , function (error, session_results, fields) {
                             console.log(session_results[0].user_id+" '''''''''''''''''''''''''''''''''#")
-                                    return callback(true, session_results[0].user_id);
+                                    return callback(session_results[0].user_id);
                         });
 
                 }
