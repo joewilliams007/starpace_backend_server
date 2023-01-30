@@ -1,8 +1,7 @@
 // Vote
 
 module.exports = (req, res) => {
-    var { user_id } = req.params;
-    var { password } = req.params;
+    var { session } = req.params;
     var { post_id } = req.params;
     var { direction } = req.params;
     
@@ -25,64 +24,15 @@ module.exports = (req, res) => {
     var notif = require('./notif');
     var timestamp = Math.floor(new Date().getTime() / 1000) // in seconds
 
-    const bcrypt = require('bcrypt');
-    const saltRounds = 10;
+    var session_app = require('./session.js');
 
-    db.query(
-        `SELECT COUNT(*) AS RowCount FROM Users WHERE user_id=${user_id}`
-        , function (error, username_results, fields) {
+    // Authenticate session and ip
+    session_app.verify(session, req, res, function(user_id){
+        startVote(user_id)
+    })
 
-            if (error) {
 
-                console.log('login error '+error.message);
-                res.status(200).json({ 
-                    success: false,
-                    error: true,
-                    message: "ok" })
-
-            }
-
-            if (Number(username_results[0].RowCount) == 0) {
-                console.log('not found');
-            
-                res.status(200).json({ 
-                    success: false,
-                    error: false,
-                    message: "wrong username" })
-
-            } else {
-
-                db.query(
-                    `SELECT password FROM Users WHERE user_id=${user_id}`
-                    , function (error, passw_results, fields) {
-
-                // Load hash from your password DB.
-                bcrypt.compare(password, passw_results[0].password, function(err, result) {
-                    // result == true
-                    console.log(result)
-
-            
-                if (result) {
-
-                            startVote();
-                            
-                } else {
-                    res.status(200).json({ 
-                        success: false,
-        
-                        error: false,
-                        message: "wrong password" })
-                }
-               
-           
-                 });
-
-                });
-            }
-
-        });
-
-    function startVote() {
+    function startVote(user_id) {
 
     db.query(
     `SELECT COUNT(*) AS RowCount FROM Vote
