@@ -5,7 +5,7 @@ module.exports = (req, res) => {
 
     var fs = require("fs"); // Load the filesystem module
 
-	var imgpath = "/home/joe/starspace/uploads/" + path;
+	var imgpath = "/home/joe/starspace_backend_server/uploads/" + path;
 
 
 		// var stats = fs.statSync(imgpath)
@@ -14,7 +14,7 @@ module.exports = (req, res) => {
 		// var fileSizeInMegabytes = fileSizeInBytes / (1024*1024);
 	//	console.log("download "+fileSizeInMegabytes+" mb "+path)
 	
-		res.sendFile("/home/joe/starspace/uploads/" + path.replaceAll("SPACESYMBOL"," "));
+		res.sendFile("/home/joe/starspace_backend_server/uploads/" + path.replaceAll("SPACESYMBOL"," "));
 
 	
 
