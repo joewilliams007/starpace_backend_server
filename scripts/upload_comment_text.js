@@ -6,16 +6,9 @@ module.exports = (req, res) => {
     var date = moment().format('YYYY-MM-DD');
     var db = require('./db');
     var notif = require('./notif');
-    var authenticate = require('./authenticate');
-    var update_db = require('./update_db');
     var timestamp = Math.floor(new Date().getTime() / 1000) // in seconds
 
-
-    const sharp = require('sharp');
-    var fs = require('fs');
-    const bcrypt = require('bcrypt');
-
-       session = req.body.session
+       
 
     var session_app = require('./session.js');
 
@@ -25,7 +18,7 @@ module.exports = (req, res) => {
     })
     content = req.body.content
     post_id = req.body.post_id
-
+    session = req.body.session
 
 
     function saveCommentText(user_id){

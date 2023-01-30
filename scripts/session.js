@@ -35,8 +35,9 @@ module.exports = {
                 } else {
 
                     db.query(
-                        `SELECT user_id FROM Sessions WHERE ip="${ipAddress}" AND session_id="${session}"`
+                        `SELECT user_id FROM Sessions WHERE session_id="${session}"`
                         , function (error, session_results, fields) {
+                            console.log(session_results[0].user_id+" '''''''''''''''''''''''''''''''''#")
                                     return callback(true, session_results[0].user_id);
                         });
 
