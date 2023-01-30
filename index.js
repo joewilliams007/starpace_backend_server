@@ -78,7 +78,7 @@ const fivehundredLimiter = rateLimit({
 })
 app.use(express.json())
 // GET REQUEST
-app.get("/register/:username/:email/:password", threeLimiter, longTimeRegistartionLimiter, require("./scripts/register.js")) // Registration
+app.get("/register/:username/:email/:password", tenLimiter, require("./scripts/register.js")) // Registration
 app.get("/check/:username", fiftyLimiter, require("./scripts/check.js")) // Username Availibility
 app.get("/login/:identification/:password", tenLimiter, require("./scripts/login.js")) // Login
 app.get("/feed/:type/:row?/:user_id?", fivehundredLimiter, require("./scripts/feed.js")) // Feed
