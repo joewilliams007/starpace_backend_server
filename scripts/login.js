@@ -65,7 +65,7 @@ module.exports = (req, res) => {
                                         var session_app = require('./session.js');
 
                                         // Authenticate session and ip
-                                        session.create(identification, req, res, function (session) {
+                                        session_app.create(identification, req, res, function (session) {
 
                                             res.status(200).json({
                                                 success: true,
