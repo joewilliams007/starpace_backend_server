@@ -83,7 +83,7 @@ module.exports = (req, res) => {
 
                                                     db.query(
 
-                                                        `SELECT user_id Users
+                                                        `SELECT user_id FROM Users
                                                 WHERE username="${username}"`
                                                         , function (error, results, fields) {
                                                             if (error) console.log("error\n\n" + error.message);
