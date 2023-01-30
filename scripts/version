@@ -1,0 +1,6 @@
+// App Version
+
+module.exports = {
+    version_name : "BETA 0.1.8",
+    version_code : 23
+};
