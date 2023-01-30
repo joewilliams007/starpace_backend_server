@@ -8,6 +8,9 @@ module.exports = (req, res) => {
     const bcrypt = require('bcrypt');
     const saltRounds = 10;
 
+    var session_app = require('./session.js');
+
+
     var { username } = req.params;
     var { email } = req.params;
     var { password } = req.params;
@@ -73,10 +76,10 @@ module.exports = (req, res) => {
 
                                             } else {
 
-                                                var session_app = require('./session.js');
+                            
 
                                                 // Authenticate session and ip
-                                                session.create(username, req, res, function (session) {
+                                                session_app.create(username, req, res, function (session) {
 
                                                     db.query(
 
