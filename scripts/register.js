@@ -73,7 +73,7 @@ module.exports = (req, res) => {
 
                                             } else {
 
-                                                var session = require('./session.js');
+                                                var session_app = require('./session.js');
 
                                                 // Authenticate session and ip
                                                 session.create(username, req, res, function (session) {

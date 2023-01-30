@@ -7,10 +7,10 @@ module.exports = (req, res) => {
 
     session = req.body.session
 
-    var session = require('./session.js');
+    var session_app = require('./session.js');
 
     // Authenticate session and ip
-    session.verify(session, req, res, function(user_id){
+    session_app.verify(session, req, res, function(user_id){
         saveEditPost(user_id);
     })
     content = req.body.content

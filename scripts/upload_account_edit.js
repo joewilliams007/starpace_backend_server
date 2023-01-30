@@ -7,13 +7,13 @@ module.exports = (req, res) => {
     replacement = req.body.replacement
     edit_type = req.body.edit_type
 
-    var session = require('./session.js');
-
-    // Authenticate session and ip
-    session.verify(session, req, res, function(user_id){
-        saveEditAcount(user_id);
+    var session_app = require('./session.js');
 
     console.log(session+" ID "+user_id)
+
+    // Authenticate session and ip
+    session_app.verify(session, req, res, function(user_id){
+        saveEditAcount(user_id);
     })
   
     function saveEditAcount(){

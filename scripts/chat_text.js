@@ -8,7 +8,7 @@ module.exports = (req, res) => {
 
     session = req.body.session
 
-    var session = require('./session.js');
+    var session_app = require('./session.js');
 
 
 
@@ -28,7 +28,7 @@ module.exports = (req, res) => {
     console.log(req.body)
 
     // Authenticate session and ip
-    session.verify(session, req, res, function(user_id){
+    session_app.verify(session, req, res, function(user_id){
         storeMessage(user_id);
     })
     function storeMessage(user_id){

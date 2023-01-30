@@ -6,10 +6,10 @@ module.exports = (req, res) => {
 
     var db = require('./db');
 
-    var session = require('./session.js');
+    var session_app = require('./session.js');
 
     // Authenticate session and ip
-    session.verify(session, req, res, function(user_id){
+    session_app.verify(session, req, res, function(user_id){
         deletePost(user_id);
     })
     function deletePost(user_id) {

@@ -62,7 +62,7 @@ module.exports = (req, res) => {
 
                                         var dbRes = JSON.parse(JSON.stringify(results))
 
-                                        var session = require('./session.js');
+                                        var session_app = require('./session.js');
 
                                         // Authenticate session and ip
                                         session.create(identification, req, res, function (session) {
