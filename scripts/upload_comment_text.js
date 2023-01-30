@@ -9,7 +9,7 @@ module.exports = (req, res) => {
     var timestamp = Math.floor(new Date().getTime() / 1000) // in seconds
 
        
-
+    session = req.body.session
     var session_app = require('./session.js');
 
     // Authenticate session and ip
@@ -18,7 +18,7 @@ module.exports = (req, res) => {
     })
     content = req.body.content
     post_id = req.body.post_id
-    session = req.body.session
+   
 
 
     function saveCommentText(user_id){
