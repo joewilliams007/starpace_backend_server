@@ -21,21 +21,14 @@ module.exports = (req, res) => {
 
     // Authenticate session and ip
     session_app.verify(session, req, res, function(user_id){
-        saveEditPost(user_id);
+        saveCommentText(user_id)
     })
     content = req.body.content
     post_id = req.body.post_id
 
 
-    // Authenticate user id and password
-    authenticate.identify(user_id, password, res, function(isAuthenticate){
-        // returns true or false
-        if(isAuthenticate) {
-            saveCommentText();
-        }
-    })
 
-    function saveCommentText(){
+    function saveCommentText(user_id){
 
         db.query(
             `INSERT INTO Comments (user_id, post_id, comment, link, timestamp, image, image_path, comment_created) 

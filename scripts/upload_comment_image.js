@@ -21,21 +21,13 @@ module.exports = (req, res) => {
 
     // Authenticate session and ip
     session_app.verify(session, req, res, function(user_id){
-        saveEditPost(user_id);
+        savePostImage(user_id);
     })
     content = req.body.content
     post_id = req.body.post_id
 
 
-    // Authenticate user id and password
-    authenticate.identify(user_id, password, res, function(isAuthenticate){
-        // returns true or false
-        if(isAuthenticate) {
-            savePostImage();
-        }
-    })
-
-    function savePostImage(){
+    function savePostImage(user_id){
 
         sharp("./uploads/" + req.files[0].filename)
         .jpeg({ progressive: true, force: false, quality: 10 })

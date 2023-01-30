@@ -2,7 +2,6 @@
 
 module.exports = (req, res) => {
     var { type } = req.params;
-    var { password } = req.params;
     var { notif_id } = req.params;
 
     var db = require('./db');

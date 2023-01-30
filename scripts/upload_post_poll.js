@@ -21,7 +21,7 @@ module.exports = (req, res) => {
 
     // Authenticate session and ip
     session_app.verify(session, req, res, function(user_id){
-        saveEditPost(user_id);
+        savePostPoll(user_id);
     })
     content = req.body.content
     item1 = req.body.item1
@@ -29,16 +29,8 @@ module.exports = (req, res) => {
     tags = req.body.tags
 
     console.log("tags: "+tags)
-    
-    // Authenticate user id and password
-    authenticate.identify(user_id, password, res, function(isAuthenticate){
-        // returns true or false
-        if(isAuthenticate) {
-            savePostPoll();
-        }
-    })
 
-    function savePostPoll(){
+    function savePostPoll(user_id){
 
         db.query(
             `INSERT INTO Posts (user_id, content, item1, item2, type, link, timestamp, image, image_path, post_created) 
