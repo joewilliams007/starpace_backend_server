@@ -9,14 +9,15 @@ module.exports = (req, res) => {
 
     var session_app = require('./session.js');
 
-    console.log(session+" ID "+user_id)
+
 
     // Authenticate session and ip
     session_app.verify(session, req, res, function(user_id){
         saveEditAcount(user_id);
+        console.log(session+" ID "+user_id)
     })
   
-    function saveEditAcount(){
+    function saveEditAcount(user_id){
 
         if (edit_type == "edit-bio") {
 
